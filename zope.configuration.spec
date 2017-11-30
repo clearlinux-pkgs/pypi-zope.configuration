@@ -4,46 +4,79 @@
 #
 Name     : zope.configuration
 Version  : 4.0.3
-Release  : 2
+Release  : 3
 URL      : https://pypi.python.org/packages/37/d7/653c2a05d876e787a1532b51ef7f89917ff17885daaac41af9da5e2f140b/zope.configuration-4.0.3.tar.gz
 Source0  : https://pypi.python.org/packages/37/d7/653c2a05d876e787a1532b51ef7f89917ff17885daaac41af9da5e2f140b/zope.configuration-4.0.3.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
 Group    : Development/Tools
 License  : ZPL-2.1
+Requires: zope.configuration-legacypython
+Requires: zope.configuration-python3
 Requires: zope.configuration-python
+Requires: Sphinx
+Requires: coverage
+Requires: nose
+Requires: setuptools
+Requires: zope.i18nmessageid
+Requires: zope.interface
+Requires: zope.schema
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : pluggy
-BuildRequires : py-python
-BuildRequires : pytest
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : tox
-BuildRequires : virtualenv
 BuildRequires : zope.i18nmessageid
 BuildRequires : zope.interface
 BuildRequires : zope.schema
 
 %description
 =========================
-The zope configuration system provides an extensible system for
-supporting various kinds of configurations.
+        
+        The zope configuration system provides an extensible system for
+        supporting various kinds of configurations.
+        
+        It is based on the idea of configuration directives. Users of the
+        configuration system provide configuration directives in some
+        language that express configuration choices. The intent is that the
+        language be pluggable.  An XML language is provided by default.
+
+%package legacypython
+Summary: legacypython components for the zope.configuration package.
+Group: Default
+Requires: python-core
+
+%description legacypython
+legacypython components for the zope.configuration package.
+
 
 %package python
 Summary: python components for the zope.configuration package.
 Group: Default
+Requires: zope.configuration-legacypython
+Requires: zope.configuration-python3
 
 %description python
 python components for the zope.configuration package.
+
+
+%package python3
+Summary: python3 components for the zope.configuration package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the zope.configuration package.
 
 
 %prep
 %setup -q -n zope.configuration-4.0.3
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1485824177
+export SOURCE_DATE_EPOCH=1512083806
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -51,16 +84,26 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
+make check || :
 %install
-export SOURCE_DATE_EPOCH=1485824177
+export SOURCE_DATE_EPOCH=1512083806
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
+%files legacypython
+%defattr(-,root,root,-)
+/usr/lib/python2*/*
+
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*
