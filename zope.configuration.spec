@@ -4,13 +4,14 @@
 #
 Name     : zope.configuration
 Version  : 4.1.0
-Release  : 10
+Release  : 11
 URL      : https://pypi.python.org/packages/be/1b/84b54ec99c92ab4db6185c1b334329d717ab6e42eb8f59c63ea3f5d6591b/zope.configuration-4.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/be/1b/84b54ec99c92ab4db6185c1b334329d717ab6e42eb8f59c63ea3f5d6591b/zope.configuration-4.1.0.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
 Group    : Development/Tools
 License  : ZPL-2.1
 Requires: zope.configuration-python3
+Requires: zope.configuration-license
 Requires: zope.configuration-python
 Requires: Sphinx
 Requires: coverage
@@ -22,7 +23,6 @@ Requires: zope.schema
 Requires: zope.testrunner
 BuildRequires : pbr
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : zope.i18nmessageid
@@ -31,6 +31,14 @@ BuildRequires : zope.schema
 
 %description
 ======================
+
+%package license
+Summary: license components for the zope.configuration package.
+Group: Default
+
+%description license
+license components for the zope.configuration package.
+
 
 %package python
 Summary: python components for the zope.configuration package.
@@ -58,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512997446
+export SOURCE_DATE_EPOCH=1529092379
 python3 setup.py build -b py3
 
 %check
@@ -68,6 +76,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/zope.configuration
+cp LICENSE.txt %{buildroot}/usr/share/doc/zope.configuration/LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -75,6 +85,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/zope.configuration/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
