@@ -22,7 +22,7 @@ Requires: zope.schema
 Requires: zope.testrunner
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : zope.i18nmessageid
