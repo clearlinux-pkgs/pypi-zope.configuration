@@ -4,22 +4,19 @@
 #
 Name     : zope.configuration
 Version  : 4.3.0
-Release  : 18
+Release  : 19
 URL      : https://files.pythonhosted.org/packages/5c/59/46de8bdebaed1dd10bdfc2f089509994d2acf4d9860e3422219077b7247f/zope.configuration-4.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5c/59/46de8bdebaed1dd10bdfc2f089509994d2acf4d9860e3422219077b7247f/zope.configuration-4.3.0.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
 Group    : Development/Tools
 License  : ZPL-2.1
-Requires: zope.configuration-python3
-Requires: zope.configuration-license
-Requires: zope.configuration-python
-Requires: Sphinx
+Requires: zope.configuration-license = %{version}-%{release}
+Requires: zope.configuration-python = %{version}-%{release}
+Requires: zope.configuration-python3 = %{version}-%{release}
 Requires: setuptools
 Requires: zope.i18nmessageid
 Requires: zope.interface
 Requires: zope.schema
-Requires: zope.testing
-Requires: zope.testrunner
 BuildRequires : buildreq-distutils3
 BuildRequires : setuptools
 BuildRequires : zope.i18nmessageid
@@ -63,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538410053
+export SOURCE_DATE_EPOCH=1541281195
 python3 setup.py build
 
 %check
@@ -73,8 +70,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/zope.configuration
-cp LICENSE.txt %{buildroot}/usr/share/doc/zope.configuration/LICENSE.txt
+mkdir -p %{buildroot}/usr/share/package-licenses/zope.configuration
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/zope.configuration/LICENSE.txt
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -85,7 +82,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/doc/zope.configuration/LICENSE.txt
+/usr/share/package-licenses/zope.configuration/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
