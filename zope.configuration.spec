@@ -4,7 +4,7 @@
 #
 Name     : zope.configuration
 Version  : 4.3.0
-Release  : 19
+Release  : 20
 URL      : https://files.pythonhosted.org/packages/5c/59/46de8bdebaed1dd10bdfc2f089509994d2acf4d9860e3422219077b7247f/zope.configuration-4.3.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5c/59/46de8bdebaed1dd10bdfc2f089509994d2acf4d9860e3422219077b7247f/zope.configuration-4.3.0.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
