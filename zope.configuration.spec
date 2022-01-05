@@ -4,7 +4,7 @@
 #
 Name     : zope.configuration
 Version  : 4.4.0
-Release  : 41
+Release  : 42
 URL      : https://files.pythonhosted.org/packages/a5/07/f0aff78d70e177f7ecfefee1682a39fa7d9a376bdb4b8f3ddfe3a6dc56d9/zope.configuration-4.4.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a5/07/f0aff78d70e177f7ecfefee1682a39fa7d9a376bdb4b8f3ddfe3a6dc56d9/zope.configuration-4.4.0.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
@@ -13,22 +13,14 @@ License  : ZPL-2.1
 Requires: zope.configuration-license = %{version}-%{release}
 Requires: zope.configuration-python = %{version}-%{release}
 Requires: zope.configuration-python3 = %{version}-%{release}
-Requires: setuptools
-Requires: zope.i18nmessageid
-Requires: zope.interface
-Requires: zope.schema
 BuildRequires : buildreq-distutils3
-BuildRequires : setuptools
-BuildRequires : zope.i18nmessageid
-BuildRequires : zope.interface
-BuildRequires : zope.schema
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(zope.i18nmessageid)
+BuildRequires : pypi(zope.interface)
+BuildRequires : pypi(zope.schema)
 
 %description
-``zope.configuration``
 ======================
-.. image:: https://img.shields.io/pypi/v/zope.configuration.svg
-:target: https://pypi.python.org/pypi/zope.configuration/
-:alt: Latest Version
 
 %package license
 Summary: license components for the zope.configuration package.
@@ -70,12 +62,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584899964
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1641416123
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
