@@ -4,7 +4,7 @@
 #
 Name     : pypi-zope.configuration
 Version  : 4.4.1
-Release  : 49
+Release  : 50
 URL      : https://files.pythonhosted.org/packages/d5/ef/f9c1dc598189c9a0ca96b392160f68bcbd63428d0f8628588f9a1046143c/zope.configuration-4.4.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d5/ef/f9c1dc598189c9a0ca96b392160f68bcbd63428d0f8628588f9a1046143c/zope.configuration-4.4.1.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
