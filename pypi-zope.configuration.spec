@@ -5,7 +5,7 @@
 #
 Name     : pypi-zope.configuration
 Version  : 5.0
-Release  : 54
+Release  : 55
 URL      : https://files.pythonhosted.org/packages/f7/ef/06e1600ed7102e1a8c81993c028d90d6da1e1283c25e99a618c353194244/zope.configuration-5.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f7/ef/06e1600ed7102e1a8c81993c028d90d6da1e1283c25e99a618c353194244/zope.configuration-5.0.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
@@ -73,7 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684612748
+export SOURCE_DATE_EPOCH=1695158868
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
