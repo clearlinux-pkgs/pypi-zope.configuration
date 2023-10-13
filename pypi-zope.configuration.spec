@@ -5,7 +5,7 @@
 #
 Name     : pypi-zope.configuration
 Version  : 5.0
-Release  : 55
+Release  : 56
 URL      : https://files.pythonhosted.org/packages/f7/ef/06e1600ed7102e1a8c81993c028d90d6da1e1283c25e99a618c353194244/zope.configuration-5.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f7/ef/06e1600ed7102e1a8c81993c028d90d6da1e1283c25e99a618c353194244/zope.configuration-5.0.tar.gz
 Summary  : Zope Configuration Markup Language (ZCML)
